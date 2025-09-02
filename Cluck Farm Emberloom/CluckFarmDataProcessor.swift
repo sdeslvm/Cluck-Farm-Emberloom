@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-// MARK: - Процессор данных для Inferno
+// MARK: - Data Processor for Cluck Farm
 
 class CluckFarmDataProcessor: ObservableObject {
     @Published var processingState: ProcessingState = .idle
@@ -45,17 +45,17 @@ class CluckFarmDataProcessor: ObservableObject {
         
         var processedData: [String: Any] = [:]
         
-        // Обработка конфигурации игры
+        // Obrabotka konfiguratsii igry
         if let gameConfig = jsonObject["gameConfig"] as? [String: Any] {
             processedData["cluckFarmConfig"] = transformGameConfig(gameConfig)
         }
         
-        // Обработка пользовательских данных
+        // Obrabotka polzovatelskih dannyh
         if let userData = jsonObject["userData"] as? [String: Any] {
             processedData["cluckFarmUserData"] = sanitizeUserData(userData)
         }
         
-        // Обработка настроек
+        // Obrabotka nastroek
         if let settings = jsonObject["settings"] as? [String: Any] {
             processedData["cluckFarmSettings"] = optimizeSettings(settings)
         }
@@ -112,7 +112,7 @@ class CluckFarmDataProcessor: ObservableObject {
     }
 }
 
-// MARK: - Ошибки обработки данных
+// MARK: - Implementation handling Implementation
 
 enum CluckFarmDataError: Error, LocalizedError {
     case invalidFormat
@@ -122,11 +122,11 @@ enum CluckFarmDataError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidFormat:
-            return "Неверный формат данных CluckFarm"
+            return "Nevernyy format dannyh CluckFarm"
         case .processingFailed:
-            return "Ошибка обработки данных CluckFarm"
+            return "Error handling dannyh CluckFarm"
         case .cacheMiss:
-            return "Данные не найдены в кэше CluckFarm"
+            return "Data ne naydeny v keshe CluckFarm"
         }
     }
 }

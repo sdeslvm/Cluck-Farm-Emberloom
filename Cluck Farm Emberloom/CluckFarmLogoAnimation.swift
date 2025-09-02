@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Анимация логотипа для Cluck Farm
+// MARK: - Animation Implementation Implementation Cluck Farm
 
 struct CluckFarmLogoAnimation: View {
     @State private var isAnimating = false
@@ -12,7 +12,7 @@ struct CluckFarmLogoAnimation: View {
     
     var body: some View {
         ZStack {
-            // Фоновые частицы
+            // Fonovye chastitsy
             ForEach(0..<20, id: \.self) { index in
                 Circle()
                     .fill(Color.cluckFarmTheme(hex: CluckFarmColorPalette.lightGreen))
@@ -31,9 +31,9 @@ struct CluckFarmLogoAnimation: View {
             }
             
             VStack(spacing: 20) {
-                // Главный логотип
+                // Glavnyy logo
                 ZStack {
-                    // Внешнее кольцо
+                    // Vneshnee koltso
                     Circle()
                         .stroke(
                             LinearGradient(
@@ -54,9 +54,9 @@ struct CluckFarmLogoAnimation: View {
                             value: pulseScale
                         )
                     
-                    // Центральная иконка
+                    // Tsentralnaya ikonka
                     ZStack {
-                        // Фон иконки
+                        // Fon ikonki
                         Circle()
                             .fill(
                                 RadialGradient(
@@ -71,7 +71,7 @@ struct CluckFarmLogoAnimation: View {
                             )
                             .frame(width: 100, height: 100)
                         
-                        // Иконка из Assets
+                        // Ikonka iz Assets
                         Image("CluckFarmLogo")
                             .resizable()
                             .scaledToFit()
@@ -83,7 +83,7 @@ struct CluckFarmLogoAnimation: View {
                 .scaleEffect(scale)
                 .opacity(opacity)
                 
-                // Название приложения
+                // Nazvanie prilozheniya
                 VStack(spacing: 5) {
                     Text("Cluck Farm")
                         .font(.system(size: 32, weight: .bold, design: .rounded))
@@ -97,7 +97,7 @@ struct CluckFarmLogoAnimation: View {
                 }
                 .opacity(opacity)
                 
-                // Индикатор загрузки
+                // Indikator zagruzki
                 HStack(spacing: 8) {
                     ForEach(0..<3) { index in
                         Circle()
@@ -121,28 +121,28 @@ struct CluckFarmLogoAnimation: View {
     }
     
     private func startAnimation() {
-        // Начальная анимация появления
+        // Nachalnaya animation poyavleniya
         withAnimation(.easeOut(duration: 1.0)) {
             opacity = 1.0
             scale = 1.0
         }
         
-        // Анимация вращения
+        // Animation vrascheniya
         withAnimation(.linear(duration: 8.0).repeatForever(autoreverses: false)) {
             rotationAngle = 360
         }
         
-        // Анимация пульсации
+        // Animation pulsatsii
         withAnimation(.easeInOut(duration: 2.0).repeatForever(autoreverses: true)) {
             pulseScale = 1.1
         }
         
-        // Анимация перьев (покачивание текста)
+        // Animation perev (pokachivanie teksta)
         withAnimation(.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {
             featherOffset = 10
         }
         
-        // Активация точек загрузки
+        // Aktivatsiya tochek zagruzki
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             isAnimating = true
         }
@@ -155,7 +155,7 @@ struct CluckFarmSplashScreen: View {
     
     var body: some View {
         ZStack {
-            // Фоновый градиент
+            // Fonovyy gradient
             LinearGradient(
                 colors: [
                     Color.cluckFarmTheme(hex: CluckFarmColorPalette.darkGreen),

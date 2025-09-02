@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-// MARK: - Менеджер доступности для Cluck Farm
+// MARK: - Manager availability Implementation Cluck Farm
 
 class CluckFarmAccessibilityManager: ObservableObject {
     static let shared = CluckFarmAccessibilityManager()
@@ -48,13 +48,13 @@ class CluckFarmAccessibilityManager: ObservableObject {
     func getAccessibilityLabel(for element: String) -> String {
         switch element {
         case "chicken_button":
-            return "Кнопка курицы. Нажмите, чтобы взаимодействовать с курицей."
+            return "Knopka kuritsy. Nazhmite, chtoby vzaimodeystvovat s kuritsey."
         case "egg_collection":
-            return "Сбор яиц. Нажмите, чтобы собрать яйца."
+            return "Sbor yaits. Nazhmite, chtoby sobrat yaytsa."
         case "farm_settings":
-            return "Настройки фермы. Нажмите, чтобы открыть настройки."
+            return "Settings fermy. Nazhmite, chtoby otkryt settings."
         case "game_score":
-            return "Счет игры. Текущий счет отображается здесь."
+            return "Schet igry. Tekuschiy schet otobrazhaetsya zdes."
         default:
             return element
         }
@@ -63,11 +63,11 @@ class CluckFarmAccessibilityManager: ObservableObject {
     func getAccessibilityHint(for element: String) -> String {
         switch element {
         case "chicken_button":
-            return "Двойное нажатие для кормления курицы"
+            return "Dvoynoe nazhatie dlya kormleniya kuritsy"
         case "egg_collection":
-            return "Двойное нажатие для сбора всех яиц"
+            return "Dvoynoe nazhatie dlya sbora vseh yaits"
         case "farm_settings":
-            return "Двойное нажатие для открытия меню настроек"
+            return "Dvoynoe nazhatie dlya otkrytiya menyu nastroek"
         default:
             return ""
         }

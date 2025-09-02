@@ -2,22 +2,22 @@ import SwiftUI
 import WebKit
 import Combine
 
-// MARK: - Протоколы и расширения
+// MARK: - Implementation Implementation extensions
 
-/// Протокол для создания градиентных представлений
+/// Implementation details
 protocol CluckFarmGradientRenderer {
     func buildFarmGradientLayer() -> CAGradientLayer
 }
 
-// MARK: - Улучшенный контейнер с градиентом
+// MARK: - Implementation container Implementation Implementation
 
-/// Кастомный контейнер с градиентным фоном
+/// Implementation details
 final class CluckFarmContainerView: UIView, CluckFarmGradientRenderer {
-    // MARK: - Приватные свойства
+    // MARK: - Implementation Implementation
 
     private let farmLayer = CAGradientLayer()
 
-    // MARK: - Инициализаторы
+    // MARK: - Implementation
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,13 +29,13 @@ final class CluckFarmContainerView: UIView, CluckFarmGradientRenderer {
         initializeFarmView()
     }
 
-    // MARK: - Методы настройки
+// MARK: - Methods
 
     private func initializeFarmView() {
         layer.insertSublayer(buildFarmGradientLayer(), at: 0)
     }
 
-    /// Создание градиентного слоя
+/// Implementation details
     func buildFarmGradientLayer() -> CAGradientLayer {
         farmLayer.colors = UIColor.cluckFarmGradientColors()
         farmLayer.startPoint = CGPoint(x: 0, y: 0)
@@ -43,7 +43,7 @@ final class CluckFarmContainerView: UIView, CluckFarmGradientRenderer {
         return farmLayer
     }
 
-    // MARK: - Обновление слоя
+    // MARK: - Implementation Implementation
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -51,10 +51,10 @@ final class CluckFarmContainerView: UIView, CluckFarmGradientRenderer {
     }
 }
 
-// MARK: - Расширения для цветов
+// MARK: - Extensions Implementation Implementation
 
 extension UIColor {
-    /// Инициализатор цвета из HEX-строки с улучшенной обработкой
+/// Implementation details
     convenience init(hex hexString: String) {
         let sanitizedHex =
             hexString
@@ -74,14 +74,14 @@ extension UIColor {
     
 }
 
-// MARK: - Представление веб-вида
+// MARK: - Implementation web-Implementation
 
 struct CluckFarmWebViewContainer: UIViewRepresentable {
-    // MARK: - Свойства
+    // MARK: - Properties
 
     @ObservedObject var loader: CluckFarmWebResourceLoader
 
-    // MARK: - Координатор
+    // MARK: - Coordinator
 
     func makeCoordinator() -> CluckFarmWebCoordinator {
         CluckFarmWebCoordinator { [weak loader] status in
@@ -91,7 +91,7 @@ struct CluckFarmWebViewContainer: UIViewRepresentable {
         }
     }
 
-    // MARK: - Создание представления
+    // MARK: - Implementation Implementation
 
     func makeUIView(context: Context) -> WKWebView {
         let configuration = buildCluckFarmWebConfiguration()
@@ -113,7 +113,7 @@ struct CluckFarmWebViewContainer: UIViewRepresentable {
         // For now, this can be left empty or you can update it as per loader's state if needed.
     }
 
-    // MARK: - Приватные методы настройки
+    // MARK: - Private methods settings
 
     private func buildCluckFarmWebConfiguration() -> WKWebViewConfiguration {
         return CluckFarmWebViewConfigurationBuilder.createAdvancedConfiguration()

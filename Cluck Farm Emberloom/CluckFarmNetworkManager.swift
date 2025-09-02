@@ -1,7 +1,7 @@
 import Foundation
 import Network
 
-// MARK: - Сетевой менеджер для Inferno
+// MARK: - Network Manager for Cluck Farm
 
 class CluckFarmNetworkManager: ObservableObject {
     @Published var isConnected = true
@@ -30,7 +30,7 @@ class CluckFarmNetworkManager: ObservableObject {
     }
 }
 
-// MARK: - Утилиты для работы с URL
+// MARK: - Utilities for working with URL
 
 extension CluckFarmNetworkManager {
     static func buildCluckFarmURL(from baseURL: String) -> URL? {

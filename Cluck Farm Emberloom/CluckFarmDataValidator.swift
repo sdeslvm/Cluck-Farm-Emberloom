@@ -1,7 +1,7 @@
 import Foundation
 import Network
 
-// MARK: - Валидатор данных для Cluck Farm
+// MARK: - Validator Implementation Implementation Cluck Farm
 
 class CluckFarmDataValidator: ObservableObject {
     static let shared = CluckFarmDataValidator()
@@ -19,15 +19,15 @@ class CluckFarmDataValidator: ObservableObject {
         var description: String {
             switch self {
             case .success:
-                return "Данные фермы успешно проверены"
+                return "Data fermy successfully provereny"
             case .networkError:
-                return "Ошибка сети при проверке данных"
+                return "Error seti pri proverke dannyh"
             case .invalidData:
-                return "Неверные данные фермы"
+                return "Nevernye data fermy"
             case .securityViolation:
-                return "Нарушение безопасности фермы"
+                return "Narushenie safelysti fermy"
             case .serverError(let message):
-                return "Ошибка сервера: \(message)"
+                return "Error servera: \(message)"
             }
         }
     }
@@ -47,25 +47,25 @@ class CluckFarmDataValidator: ObservableObject {
         isValidationInProgress = true
         defer { isValidationInProgress = false }
         
-        // Проверка сетевого подключения
+        // Proverka setevogo connection
         guard networkMonitor.currentPath.status == .satisfied else {
             lastValidationResult = .networkError
             return .networkError
         }
         
-        // Проверка структуры данных
+        // Proverka struktury dannyh
         guard validateDataStructure(data) else {
             lastValidationResult = .invalidData
             return .invalidData
         }
         
-        // Проверка безопасности
+        // Proverka safelysti
         guard validateDataSecurity(data) else {
             lastValidationResult = .securityViolation
             return .securityViolation
         }
         
-        // Проверка на сервере
+        // Proverka na servere
         do {
             let serverResult = try await validateOnServer(data)
             lastValidationResult = serverResult
@@ -86,7 +86,7 @@ class CluckFarmDataValidator: ObservableObject {
             }
         }
         
-        // Проверка типов данных
+        // Proverka tipov dannyh
         guard let chickenCount = data["chicken_count"] as? Int,
               let eggCount = data["egg_count"] as? Int,
               let level = data["level"] as? Int,
@@ -94,7 +94,7 @@ class CluckFarmDataValidator: ObservableObject {
             return false
         }
         
-        // Проверка разумных значений
+        // Proverka razumnyh znacheniy
         return chickenCount >= 0 && chickenCount <= 1000 &&
                eggCount >= 0 && eggCount <= 10000 &&
                level >= 1 && level <= 100 &&
@@ -104,7 +104,7 @@ class CluckFarmDataValidator: ObservableObject {
     private func validateDataSecurity(_ data: [String: Any]) -> Bool {
         let securityLayer = CluckFarmSecurityLayer.shared
         
-        // Проверка на подозрительные значения
+        // Proverka na podozritelnye znacheniya
         for (key, value) in data {
             if let stringValue = value as? String {
                 if !securityLayer.validateCluckFarmEndpoint(stringValue) && key.contains("url") {

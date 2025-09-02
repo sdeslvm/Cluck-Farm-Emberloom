@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Менеджер тактильной обратной связи для Cluck Farm
+// MARK: - Manager Implementation Implementation Implementation Implementation Cluck Farm
 
 class CluckFarmHapticManager: ObservableObject {
     static let shared = CluckFarmHapticManager()

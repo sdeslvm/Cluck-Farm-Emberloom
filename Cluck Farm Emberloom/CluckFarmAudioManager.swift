@@ -2,7 +2,7 @@ import Foundation
 import AVFoundation
 import UIKit
 
-// MARK: - Аудио менеджер для Cluck Farm
+// MARK: - Audio manager Implementation Cluck Farm
 
 class CluckFarmAudioManager: NSObject, ObservableObject {
     static let shared = CluckFarmAudioManager()

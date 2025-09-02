@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import GameKit
 
-// MARK: - Менеджер игрового процесса для Cluck Farm
+// MARK: - Manager Implementation Implementation Implementation Cluck Farm
 
 @MainActor
 class CluckFarmGameplayManager: NSObject, ObservableObject {
@@ -31,10 +31,10 @@ class CluckFarmGameplayManager: NSObject, ObservableObject {
         let unlockedDate: Date?
         
         static let allAchievements = [
-            CluckFarmAchievement(title: "Первый цыпленок", description: "Получите первого цыпленка", iconName: "🐣", pointsRequired: 10, isUnlocked: false, unlockedDate: nil),
-            CluckFarmAchievement(title: "Мастер фермер", description: "Достигните 100 очков", iconName: "🏆", pointsRequired: 100, isUnlocked: false, unlockedDate: nil),
-            CluckFarmAchievement(title: "Король курятника", description: "Соберите 50 яиц", iconName: "👑", pointsRequired: 500, isUnlocked: false, unlockedDate: nil),
-            CluckFarmAchievement(title: "Легенда фермы", description: "Достигните 10 уровня", iconName: "⭐", pointsRequired: 1000, isUnlocked: false, unlockedDate: nil)
+            CluckFarmAchievement(title: "Pervyy tsyplenok", description: "Poluchite pervogo tsyplenka", iconName: "🐣", pointsRequired: 10, isUnlocked: false, unlockedDate: nil),
+            CluckFarmAchievement(title: "Master fermer", description: "Dostignite 100 ochkov", iconName: "🏆", pointsRequired: 100, isUnlocked: false, unlockedDate: nil),
+            CluckFarmAchievement(title: "Korol kuryatnika", description: "Soberite 50 yaits", iconName: "👑", pointsRequired: 500, isUnlocked: false, unlockedDate: nil),
+            CluckFarmAchievement(title: "Legenda fermy", description: "Dostignite 10 urovnya", iconName: "⭐", pointsRequired: 1000, isUnlocked: false, unlockedDate: nil)
         ]
     }
     
@@ -111,8 +111,8 @@ class CluckFarmGameplayManager: NSObject, ObservableObject {
             farmExperience -= requiredExperience
             
             notifications.scheduleAchievementNotification(
-                title: "Новый уровень!",
-                message: "Поздравляем! Вы достигли \(currentLevel) уровня фермы!"
+                title: "Novyy uroven!",
+                message: "Pozdravlyaem! Vy dostigli \(currentLevel) urovnya fermy!"
             )
             
             haptics.gameSuccess()
@@ -132,7 +132,7 @@ class CluckFarmGameplayManager: NSObject, ObservableObject {
                 )
                 
                 notifications.scheduleAchievementNotification(
-                    title: "Достижение разблокировано!",
+                    title: "Dostizhenie razblokirovano!",
                     message: achievements[i].title
                 )
                 

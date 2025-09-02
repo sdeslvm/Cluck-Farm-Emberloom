@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Обработчик ошибок для Cluck Farm
+// MARK: - Handler errors Implementation Cluck Farm
 
 class CluckFarmErrorHandler: ObservableObject {
     static let shared = CluckFarmErrorHandler()
@@ -24,38 +24,38 @@ class CluckFarmErrorHandler: ObservableObject {
         var errorDescription: String? {
             switch self {
             case .networkUnavailable:
-                return "Сеть недоступна. Проверьте подключение к интернету."
+                return "Network nedostupna. Proverte podklyuchenie k internetu."
             case .invalidGameData:
-                return "Неверные данные игры. Попробуйте перезапустить приложение."
+                return "Nevernye data igry. Poprobuyte perezapustit app."
             case .securityValidationFailed:
-                return "Ошибка проверки безопасности. Обратитесь в службу поддержки."
+                return "Error proverki safelysti. Obratites v sluzhbu podderzhki."
             case .webViewLoadFailed(let details):
-                return "Не удалось загрузить игру: \(details)"
+                return "Ne udalos zagruzit igru: \(details)"
             case .audioInitializationFailed:
-                return "Не удалось инициализировать аудио систему."
+                return "Ne udalos initsializirovat audio sistemu."
             case .permissionDenied(let permission):
-                return "Доступ к \(permission) запрещен. Проверьте настройки приложения."
+                return "Dostup k \(permission) zapreschen. Proverte settings prilozheniya."
             case .unexpectedError(let message):
-                return "Неожиданная ошибка: \(message)"
+                return "Neozhidannaya error: \(message)"
             }
         }
         
         var recoverySuggestion: String? {
             switch self {
             case .networkUnavailable:
-                return "Проверьте Wi-Fi или мобильную связь и попробуйте снова."
+                return "Proverte Wi-Fi ili mobilnuyu svyaz i poprobuyte snova."
             case .invalidGameData:
-                return "Перезапустите приложение или переустановите его."
+                return "Perezapustite app ili pereustanovite ego."
             case .securityValidationFailed:
-                return "Убедитесь, что приложение обновлено до последней версии."
+                return "Ubedites, chto app obnovleno do posledney versii."
             case .webViewLoadFailed:
-                return "Проверьте подключение к интернету и попробуйте снова."
+                return "Proverte podklyuchenie k internetu i poprobuyte snova."
             case .audioInitializationFailed:
-                return "Перезапустите приложение или проверьте настройки звука."
+                return "Perezapustite app ili proverte settings zvuka."
             case .permissionDenied:
-                return "Перейдите в Настройки > Конфиденциальность и предоставьте необходимые разрешения."
+                return "Pereydite v Settings > Konfidentsialnost i predostavte neobhodimye permissions."
             case .unexpectedError:
-                return "Перезапустите приложение. Если проблема повторится, обратитесь в поддержку."
+                return "Perezapustite app. Esli problema povtoritsya, obratites v podderzhku."
             }
         }
     }

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-// Перенесено в CluckFarmColorUtilities.swift
+// Pereneseno v CluckFarmColorUtilities.swift
 
 struct CluckFarmGameInitialView: View {
     @StateObject private var themeEngine = CluckFarmThemeEngine.shared
@@ -20,7 +20,7 @@ struct CluckFarmGameInitialView: View {
                         removal: .scale.combined(with: .opacity)
                     ))
             } else {
-                // Используем фоновый градиент из темы
+                // Ispolzuem fonovyy gradient iz temy
                 themeEngine.getBackgroundGradient()
                     .ignoresSafeArea()
                 
@@ -28,11 +28,11 @@ struct CluckFarmGameInitialView: View {
             }
         }
         .onAppear {
-            // Отключаем звуки
+            // Otklyuchaem zvuki
             // audioManager.playFarmAmbience()
             hapticManager.gameSuccess()
             
-            // Показываем сплэш экран на 2 секунды для быстрого тестирования
+            // Pokazyvaem splesh screen na 2 sekundy dlya quicklygo testirovaniya
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 withAnimation(.easeInOut(duration: 1.0)) {
                     showSplash = false
@@ -46,4 +46,4 @@ struct CluckFarmGameInitialView: View {
     CluckFarmGameInitialView()
 }
 
-// Перенесено в CluckFarmColorUtilities.swift
+// Pereneseno v CluckFarmColorUtilities.swift

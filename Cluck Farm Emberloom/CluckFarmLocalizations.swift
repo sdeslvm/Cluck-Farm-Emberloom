@@ -1,6 +1,6 @@
 import Foundation
 
-// MARK: - Локализация для Cluck Farm
+// MARK: - Localization Implementation Cluck Farm
 
 class CluckFarmLocalizations {
     static let shared = CluckFarmLocalizations()
@@ -8,28 +8,28 @@ class CluckFarmLocalizations {
     private let localizedStrings: [String: [String: String]] = [
         "ru": [
             "app_name": "Cluck Farm: Emberloom",
-            "loading_message": "Загружается ферма...",
-            "game_ready": "Ферма готова к игре!",
-            "network_error": "Ошибка сети",
-            "retry_button": "Повторить",
-            "settings_title": "Настройки фермы",
-            "audio_settings": "Звуковые настройки",
-            "privacy_settings": "Настройки конфиденциальности",
-            "performance_settings": "Настройки производительности",
-            "about_game": "О игре",
-            "version": "Версия",
-            "support": "Поддержка",
-            "rate_app": "Оценить приложение",
-            "share_app": "Поделиться",
-            "tutorial": "Обучение",
-            "achievements": "Достижения",
-            "leaderboard": "Таблица лидеров",
-            "farm_status": "Статус фермы",
-            "chicken_count": "Количество кур",
-            "egg_production": "Производство яиц",
-            "farm_level": "Уровень фермы",
-            "daily_bonus": "Ежедневный бонус",
-            "special_events": "Специальные события"
+            "loading_message": "Zagruzhaetsya ferma...",
+            "game_ready": "Ferma gotova k igre!",
+            "network_error": "Error seti",
+            "retry_button": "Povtorit",
+            "settings_title": "Settings fermy",
+            "audio_settings": "Zvukovye settings",
+            "privacy_settings": "Settings konfidentsialnosti",
+            "performance_settings": "Settings proizvoditelnosti",
+            "about_game": "O igre",
+            "version": "Versiya",
+            "support": "Podderzhka",
+            "rate_app": "Otsenit app",
+            "share_app": "Podelitsya",
+            "tutorial": "Obuchenie",
+            "achievements": "Dostizheniya",
+            "leaderboard": "Tablitsa liderov",
+            "farm_status": "Status fermy",
+            "chicken_count": "Kolichestvo kur",
+            "egg_production": "Proizvodstvo yaits",
+            "farm_level": "Uroven fermy",
+            "daily_bonus": "Ezhednevnyy bonus",
+            "special_events": "Spetsialnye sobytiya"
         ],
         "en": [
             "app_name": "Cluck Farm: Emberloom",

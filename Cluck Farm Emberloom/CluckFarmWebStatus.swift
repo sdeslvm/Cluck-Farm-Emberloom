@@ -1,15 +1,15 @@
 import Foundation
 
-// MARK: - Протоколы и расширения
+// MARK: - Implementation Implementation extensions
 
-/// Протокол для статусов с возможностью сравнения
+/// Implementation details
 protocol WebStatusComparable {
     func isEquivalent(to other: Self) -> Bool
 }
 
-// MARK: - Улучшенное перечисление статусов
+// MARK: - Implementation Implementation Implementation
 
-/// Перечисление статусов веб-соединения с расширенной функциональностью
+/// Implementation details
 enum CluckFarmWebStatus: Equatable, WebStatusComparable {
     case standby
     case progressing(progress: Double)
@@ -17,9 +17,9 @@ enum CluckFarmWebStatus: Equatable, WebStatusComparable {
     case failure(reason: String)
     case noConnection
 
-    // MARK: - Пользовательские методы сравнения
+    // MARK: - Implementation Implementation Implementation
 
-    /// Проверка эквивалентности статусов с точным сравнением
+/// Implementation details
     func isEquivalent(to other: CluckFarmWebStatus) -> Bool {
         switch (self, other) {
         case (.standby, .standby),
@@ -35,15 +35,15 @@ enum CluckFarmWebStatus: Equatable, WebStatusComparable {
         }
     }
 
-    // MARK: - Вычисляемые свойства
+    // MARK: - Implementation Implementation
 
-    /// Текущий прогресс подключения
+/// Implementation details
     var progress: Double? {
         guard case let .progressing(value) = self else { return nil }
         return value
     }
 
-    /// Индикатор успешного завершения
+/// Implementation details
     var isSuccessful: Bool {
         switch self {
         case .finished: return true
@@ -51,7 +51,7 @@ enum CluckFarmWebStatus: Equatable, WebStatusComparable {
         }
     }
 
-    /// Индикатор наличия ошибки
+/// Implementation details
     var hasError: Bool {
         switch self {
         case .failure, .noConnection: return true
@@ -60,10 +60,10 @@ enum CluckFarmWebStatus: Equatable, WebStatusComparable {
     }
 }
 
-// MARK: - Расширения для улучшения функциональности
+// MARK: - Extensions Implementation Implementation Implementation
 
 extension CluckFarmWebStatus {
-    /// Безопасное извлечение причины ошибки
+/// Implementation details
     var errorReason: String? {
         guard case let .failure(reason) = self else { return nil }
         return reason
@@ -86,7 +86,7 @@ extension CluckFarmWebStatus {
     }
 }
 
-// MARK: - Кастомная реализация Equatable
+// MARK: - Custom implementation Equatable
 
 extension CluckFarmWebStatus {
     static func == (lhs: CluckFarmWebStatus, rhs: CluckFarmWebStatus) -> Bool {

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Ядро игры Cluck Farm
+// MARK: - Core Implementation Cluck Farm
 
 class CluckFarmGameCore: ObservableObject {
     @Published var gameState: CluckFarmGameState = .initializing
@@ -42,11 +42,11 @@ class CluckFarmGameCore: ObservableObject {
     func initializeCluckFarmGame() {
         gameState = .loading
         
-        // Генерируем токен сессии
+        // Generiruem token sessii
         let sessionToken = securityLayer.generateCluckFarmSessionToken()
         UserDefaults.standard.set(sessionToken, forKey: "cluckFarmSessionToken")
         
-        // Инициализируем игровые данные
+        // Initsializiruem igrovye data
         setupCluckFarmGameData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -55,12 +55,12 @@ class CluckFarmGameCore: ObservableObject {
     }
     
     private func setupCluckFarmGameData() {
-        // Настройка начальных параметров игры
+        // Nastroyka nachalnyh parametrov igry
         currentScore = 0
         gameLevel = 1
         isGameActive = false
         
-        // Загрузка сохраненных данных
+        // Loading sohranennyh dannyh
         loadCluckFarmSaveData()
     }
     
@@ -80,7 +80,7 @@ class CluckFarmGameCore: ObservableObject {
         gameState = .playing
         isGameActive = true
         
-        // Запускаем игровой цикл
+        // Zapuskaem igrovoy tsikl
         beginCluckFarmGameLoop()
     }
     
@@ -90,7 +90,7 @@ class CluckFarmGameCore: ObservableObject {
         gameState = .paused
         isGameActive = false
         
-        // Сохраняем текущий прогресс
+        // Sohranyaem tekuschiy progress
         saveCluckFarmProgress()
     }
     
@@ -100,7 +100,7 @@ class CluckFarmGameCore: ObservableObject {
         gameState = .playing
         isGameActive = true
         
-        // Возобновляем игровой цикл
+        // Vozobnovlyaem igrovoy tsikl
         beginCluckFarmGameLoop()
     }
     
@@ -108,12 +108,12 @@ class CluckFarmGameCore: ObservableObject {
         gameState = .gameOver
         isGameActive = false
         
-        // Сохраняем финальный результат
+        // Sohranyaem finalnyy rezultat
         saveCluckFarmFinalScore()
     }
     
     private func beginCluckFarmGameLoop() {
-        // Основной игровой цикл
+        // Main igrovoy tsikl
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             guard self.isGameActive else {
                 timer.invalidate()
@@ -125,8 +125,8 @@ class CluckFarmGameCore: ObservableObject {
     }
     
     private func updateCluckFarmGameState() {
-        // Обновление состояния игры
-        // Здесь будет логика обновления игры
+        // Obnovlenie sostoyaniya igry
+        // Zdes budet logika obnovleniya igry
     }
     
     private func saveCluckFarmProgress() {
@@ -138,7 +138,7 @@ class CluckFarmGameCore: ObservableObject {
         let encryptedScore = securityLayer.encryptCluckFarmData("\(currentScore)")
         UserDefaults.standard.set(currentScore, forKey: "cluckFarmFinalScore")
         
-        // Очищаем временные данные
+        // Ochischaem vremennye data
         UserDefaults.standard.removeObject(forKey: "cluckFarmSavedScore")
         UserDefaults.standard.removeObject(forKey: "cluckFarmSavedLevel")
     }
@@ -149,7 +149,7 @@ class CluckFarmGameCore: ObservableObject {
         gameLevel = 1
         isGameActive = false
         
-        // Очищаем все сохраненные данные
+        // Ochischaem vse sohranennye data
         UserDefaults.standard.removeObject(forKey: "cluckFarmSavedScore")
         UserDefaults.standard.removeObject(forKey: "cluckFarmSavedLevel")
         UserDefaults.standard.removeObject(forKey: "cluckFarmFinalScore")
@@ -157,7 +157,7 @@ class CluckFarmGameCore: ObservableObject {
     }
 }
 
-// MARK: - Расширения для игровой логики
+// MARK: - Extensions Implementation Implementation Implementation
 
 extension CluckFarmGameCore {
     var canStartGame: Bool {

@@ -42,14 +42,14 @@ class CluckFarmWebCoordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
         decisionHandler(.allow)
     }
 
-    // MARK: - WKUIDelegate методы для поддержки камеры и микрофона
+    // MARK: - WKUIDelegate Implementation Implementation Implementation Implementation Implementation Implementation
 
     func webView(
         _ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin,
         initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType,
         decisionHandler: @escaping (WKPermissionDecision) -> Void
     ) {
-        // Автоматически разрешаем доступ к камере и микрофону
+        // Avtomaticheski razreshaem dostup k kamere i mikrofonu
         decisionHandler(.grant)
     }
 

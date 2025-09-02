@@ -2,7 +2,7 @@ import Foundation
 import WebKit
 import SwiftUI
 
-// MARK: - Вспомогательные классы для WebView
+// MARK: - Implementation Implementation Implementation WebView
 
 class CluckFarmWebViewConfigurationBuilder {
     static func createAdvancedConfiguration() -> WKWebViewConfiguration {
@@ -31,7 +31,7 @@ class CluckFarmWebViewConfigurationBuilder {
     }
 }
 
-// MARK: - Менеджер данных WebView
+// MARK: - Manager Implementation WebView
 
 class CluckFarmWebDataManager {
     static func clearCluckFarmWebData() {
@@ -53,7 +53,7 @@ class CluckFarmWebDataManager {
     }
 }
 
-// MARK: - Расширения для строк
+// MARK: - Extensions Implementation Implementation
 
 extension String {
     static let infernoCache = WKWebsiteDataTypeDiskCache

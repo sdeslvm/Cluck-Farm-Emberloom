@@ -2,54 +2,54 @@ import Combine
 import SwiftUI
 import WebKit
 
-// MARK: - Протоколы
+// MARK: - Protocols
 
-/// Протокол для управления состоянием веб-загрузки
+/// Protocol for managing web loading state
 protocol WebLoadable: AnyObject {
     var state: CluckFarmWebStatus { get set }
     func setConnectivity(_ available: Bool)
 }
 
-/// Протокол для мониторинга прогресса загрузки
+/// Protocol for monitoring loading progress
 protocol ProgressMonitoring {
     func observeProgression()
     func monitor(_ webView: WKWebView)
 }
 
-// MARK: - Основной загрузчик веб-представления
+// MARK: - Main web view loader
 
-/// Класс для управления загрузкой и состоянием веб-представления
+/// Class for managing web view loading and state
 final class CluckFarmWebResourceLoader: NSObject, ObservableObject, WebLoadable, ProgressMonitoring {
-    // MARK: - Свойства
+    // MARK: - Properties
 
     @Published var state: CluckFarmWebStatus = .standby
 
-    let infernoEndpoint: URL
-    private var infernoSubscriptions = Set<AnyCancellable>()
-    private var infernoProgressStream = PassthroughSubject<Double, Never>()
-    private var infernoViewFactory: (() -> WKWebView)?
+    let cluckFarmEndpoint: URL
+    private var cluckFarmSubscriptions = Set<AnyCancellable>()
+    private var cluckFarmProgressStream = PassthroughSubject<Double, Never>()
+    private var cluckFarmViewFactory: (() -> WKWebView)?
 
-    // MARK: - Инициализация
+    // MARK: - Initialization
 
     init(resourceURL: URL) {
-        self.infernoEndpoint = resourceURL
+        self.cluckFarmEndpoint = resourceURL
         super.init()
         observeProgression()
     }
 
-    // MARK: - Публичные методы
+    // MARK: - Public methods
 
-    /// Привязка веб-представления к загрузчику
+    /// Attach web view to loader
     func attachCluckFarmWebView(factory: @escaping () -> WKWebView) {
-        infernoViewFactory = factory
-        initiateInfernoLoad()
+        cluckFarmViewFactory = factory
+        initiateCluckFarmLoad()
     }
 
-    /// Установка доступности подключения
+    /// Set connectivity availability
     func setConnectivity(_ available: Bool) {
         switch (available, state) {
         case (true, .noConnection):
-            initiateInfernoLoad()
+            initiateCluckFarmLoad()
         case (false, _):
             state = .noConnection
         default:
@@ -57,60 +57,60 @@ final class CluckFarmWebResourceLoader: NSObject, ObservableObject, WebLoadable,
         }
     }
 
-    // MARK: - Приватные методы загрузки
+    // MARK: - Private loading methods
 
-    /// Запуск загрузки веб-представления
-    private func initiateInfernoLoad() {
-        guard let webView = infernoViewFactory?() else { return }
+    /// Start web view loading
+    private func initiateCluckFarmLoad() {
+        guard let webView = cluckFarmViewFactory?() else { return }
 
-        let request = URLRequest(url: infernoEndpoint, timeoutInterval: 12)
+        let request = URLRequest(url: cluckFarmEndpoint, timeoutInterval: 12)
         state = .progressing(progress: 0)
 
         webView.navigationDelegate = self
         webView.load(request)
-        monitorInfernoProgress(webView)
+        monitorCluckFarmProgress(webView)
     }
 
-    // MARK: - Методы мониторинга
+    // MARK: - Monitoring methods
 
-    /// Наблюдение за прогрессом загрузки
+    /// Observe loading progress
     func observeProgression() {
-        startInfernoProgressMonitoring()
+        startCluckFarmProgressMonitoring()
     }
     
-    private func startInfernoProgressMonitoring() {
-        infernoProgressStream
+    private func startCluckFarmProgressMonitoring() {
+        cluckFarmProgressStream
             .removeDuplicates()
             .sink { [weak self] progress in
                 guard let self else { return }
                 self.state = progress < 1.0 ? .progressing(progress: progress) : .finished
             }
-            .store(in: &infernoSubscriptions)
+            .store(in: &cluckFarmSubscriptions)
     }
 
-    /// Мониторинг прогресса веб-представления
+    /// Monitor web view progress
     func monitor(_ webView: WKWebView) {
-        monitorInfernoProgress(webView)
+        monitorCluckFarmProgress(webView)
     }
     
-    private func monitorInfernoProgress(_ webView: WKWebView) {
+    private func monitorCluckFarmProgress(_ webView: WKWebView) {
         webView.publisher(for: \.estimatedProgress)
             .sink { [weak self] progress in
-                self?.infernoProgressStream.send(progress)
+                self?.cluckFarmProgressStream.send(progress)
             }
-            .store(in: &infernoSubscriptions)
+            .store(in: &cluckFarmSubscriptions)
     }
 }
 
-// MARK: - Расширение для обработки навигации
+// MARK: - Navigation handling extension
 
 extension CluckFarmWebResourceLoader: WKNavigationDelegate {
-    /// Обработка ошибок при навигации
+    /// Handle navigation errors
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         handleNavigationError(error)
     }
 
-    /// Обработка ошибок при provisional навигации
+    /// Handle provisional navigation errors
     func webView(
         _ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!,
         withError error: Error
@@ -118,18 +118,18 @@ extension CluckFarmWebResourceLoader: WKNavigationDelegate {
         handleNavigationError(error)
     }
 
-    // MARK: - Приватные методы обработки ошибок
+    // MARK: - Private error handling methods
 
-    /// Обобщенный метод обработки ошибок навигации
+    /// General navigation error handling method
     private func handleNavigationError(_ error: Error) {
         state = .failure(reason: error.localizedDescription)
     }
 }
 
-// MARK: - Расширения для улучшения функциональности
+// MARK: - Extensions for enhanced functionality
 
 extension CluckFarmWebResourceLoader {
-    /// Создание загрузчика с безопасным URL
+    /// Create loader with safe URL
     convenience init?(urlString: String) {
         guard let url = URL(string: urlString) else { return nil }
         self.init(resourceURL: url)

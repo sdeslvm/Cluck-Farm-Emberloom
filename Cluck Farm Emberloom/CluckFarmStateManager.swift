@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Менеджер состояний для Cluck Farm
+// MARK: - Manager Implementation Implementation Cluck Farm
 
 class CluckFarmStateManager: ObservableObject {
     @Published var currentCluckFarmState: CluckFarmGameState = .initializing
@@ -22,13 +22,13 @@ class CluckFarmStateManager: ObservableObject {
         
         var displayName: String {
             switch self {
-            case .initializing: return "Инициализация фермы"
-            case .loading: return "Загрузка курятника"
-            case .ready: return "Ферма готова"
-            case .playing: return "Игра на ферме"
-            case .paused: return "Пауза фермы"
-            case .error: return "Ошибка фермы"
-            case .offline: return "Ферма оффлайн"
+            case .initializing: return "Initsializatsiya fermy"
+            case .loading: return "Loading kuryatnika"
+            case .ready: return "Ferma gotova"
+            case .playing: return "Game na ferme"
+            case .paused: return "Pauza fermy"
+            case .error: return "Error fermy"
+            case .offline: return "Ferma offlayn"
             }
         }
     }
@@ -48,7 +48,7 @@ class CluckFarmStateManager: ObservableObject {
         case (_, .loading):
             loadingProgress = 0.0
         case (_, .error):
-            // Сохраняем состояние ошибки
+            // Sohranyaem state oshibki
             break
         case (_, .ready):
             loadingProgress = 1.0
@@ -82,7 +82,7 @@ class CluckFarmStateManager: ObservableObject {
     }
 }
 
-// MARK: - Расширения для удобства
+// MARK: - Extensions Implementation Implementation
 
 extension CluckFarmStateManager {
     var isLoading: Bool {

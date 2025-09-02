@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Протоколы для улучшения расширяемости
+// MARK: - Implementation Implementation Implementation Implementation
 
 protocol ProgressDisplayable {
     var progressPercentage: Int { get }
@@ -11,7 +11,7 @@ protocol BackgroundProviding {
     func makeBackground() -> BackgroundContent
 }
 
-// MARK: - Расширенная структура загрузки
+// MARK: - Implementation Implementation Implementation
 
 struct CluckFarmLoadingOverlay: View, ProgressDisplayable {
     @StateObject private var themeEngine = CluckFarmThemeEngine.shared
@@ -22,19 +22,19 @@ struct CluckFarmLoadingOverlay: View, ProgressDisplayable {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                // Фон: зеленый градиент
+                // Fon: zelenyy gradient
                 themeEngine.getBackgroundGradient()
                     .ignoresSafeArea(.all)
                     
                     
 
-                // Адаптивная компоновка для портретной и горизонтальной ориентации
+                // Adaptivnaya komponovka dlya portretnoy i gorizontalnoy orientatsii
                 if geo.size.width > geo.size.height {
-                    // Горизонтальная ориентация
+                    // Gorizontalnaya orientatsiya
                     HStack {
                         Spacer()
                         
-                        // Логотип слева
+                        // Logo sleva
                         CluckFarmLogoAnimation()
                             .frame(width: geo.size.width * 0.25, height: geo.size.height * 0.6)
                         
@@ -49,7 +49,7 @@ struct CluckFarmLoadingOverlay: View, ProgressDisplayable {
                         
                         Spacer().frame(width: 60)
                         
-                        // Прогресс справа
+                        // Progress sprava
                         VStack(spacing: 20) {
                             Text("Loading \(progressPercentage)%")
                                 .font(.system(size: 24, weight: .bold))
@@ -73,17 +73,17 @@ struct CluckFarmLoadingOverlay: View, ProgressDisplayable {
                         Spacer()
                     }
                 } else {
-                    // Портретная ориентация
+                    // Portretnaya orientatsiya
                     VStack {
                         Spacer()
                         
-                        // Анимированный логотип в верхней части
+                        // Animirovannyy logo v verhney chasti
                         CluckFarmLogoAnimation()
                             .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.3)
                         
                         Spacer().frame(height: 80)
                         
-                        // Прогрессбар и проценты внизу
+                        // Progressbar i protsenty vnizu
                         VStack(spacing: 20) {
                             Text("Loading Farm \(progressPercentage)%")
                                 .font(.system(size: 28, weight: .bold))
@@ -113,9 +113,9 @@ struct CluckFarmLoadingOverlay: View, ProgressDisplayable {
     }
 }
 
-// MARK: - Фоновые представления
+// MARK: - Background Views
 
-struct InfernoBackground: View, BackgroundProviding {
+struct CluckFarmBackground: View, BackgroundProviding {
     func makeBackground() -> some View {
         Image("background")
             .resizable()
@@ -128,7 +128,7 @@ struct InfernoBackground: View, BackgroundProviding {
     }
 }
 
-// MARK: - Индикатор прогресса с анимацией
+// MARK: - Implementation Implementation Implementation Implementation
 
 struct CluckFarmProgressBar: View {
     let value: Double
@@ -159,28 +159,28 @@ struct CluckFarmProgressBar: View {
         let progress = value
         
         if progress < 0.25 {
-            // Начальный рост - темно-зеленый к зеленому
+            // Nachalnyy rost - temno-zelenyy k zelenomu
             return [
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.darkGreen),
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.primaryGreen),
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.secondaryGreen)
             ]
         } else if progress < 0.5 {
-            // Развивающаяся ферма - зеленый к светло-зеленому
+            // Razvivayuschayasya ferma - zelenyy k svetlo-zelenomu
             return [
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.primaryGreen),
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.secondaryGreen),
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.lightGreen)
             ]
         } else if progress < 0.75 {
-            // Процветающая ферма - светло-зеленый к яркому
+            // Protsvetayuschaya ferma - svetlo-zelenyy k yarkomu
             return [
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.secondaryGreen),
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.lightGreen),
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.accentGreen)
             ]
         } else {
-            // Полная ферма - яркие зеленые тона
+            // Polnaya ferma - yarkie zelenye tona
             return [
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.lightGreen),
                 Color.cluckFarmTheme(hex: CluckFarmColorPalette.accentGreen),
@@ -224,7 +224,7 @@ struct CluckFarmProgressBar: View {
         let height = geometry.size.height
 
         return ZStack {
-            // Основной неоновый градиент
+            // Main neonovyy gradient
             RoundedRectangle(cornerRadius: height / 2)
                 .fill(
                     LinearGradient(
@@ -238,7 +238,7 @@ struct CluckFarmProgressBar: View {
                 .shadow(color: farmProgressionColors().first?.opacity(0.8) ?? Color.green.opacity(0.8), radius: 15, y: 0)
                 .shadow(color: farmProgressionColors().last?.opacity(0.6) ?? Color.green.opacity(0.6), radius: 25, y: 0)
 
-            // Анимированный блеск
+            // Animirovannyy blesk
             RoundedRectangle(cornerRadius: height / 2)
                 .fill(
                     LinearGradient(
@@ -256,7 +256,7 @@ struct CluckFarmProgressBar: View {
                 .clipped()
                 .frame(width: width, height: height)
 
-            // Внутреннее свечение
+            // Vnutrennee svechenie
             RoundedRectangle(cornerRadius: height / 2)
                 .fill(
                     RadialGradient(
@@ -331,7 +331,7 @@ private struct ProgressParticle {
 }
 
 
-// MARK: - Превью
+// MARK: - Implementation
 
 #Preview("Vertical") {
     CluckFarmLoadingOverlay(progress: 0.2)

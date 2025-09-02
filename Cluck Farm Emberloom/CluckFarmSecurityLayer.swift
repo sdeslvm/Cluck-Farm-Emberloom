@@ -1,13 +1,13 @@
 import Foundation
 import CryptoKit
 
-// MARK: - Слой безопасности для Inferno
+// MARK: - Security Layer for Cluck Farm
 
 class CluckFarmSecurityLayer {
     static let shared = CluckFarmSecurityLayer()
     
-    private let infernoKeychain = "com.cluckfarm.emberloom.keychain"
-    private let infernoSalt = "CluckFarmEmberloomSalt"
+    private let cluckFarmKeychain = "com.cluckfarm.emberloom.keychain"
+    private let cluckFarmSalt = "CluckFarmEmberloomSalt"
     
     private init() {}
     
@@ -27,17 +27,17 @@ class CluckFarmSecurityLayer {
     func validateCluckFarmEndpoint(_ url: String) -> Bool {
         guard let urlObj = URL(string: url) else { return false }
         
-        // Проверяем домен
+        // Proveryaem domen
         let allowedDomains = ["cluckfargame.com", "www.cluckfargame.com"]
         guard let host = urlObj.host,
               allowedDomains.contains(host) else { return false }
         
-        // Проверяем протокол
+        // Proveryaem protokol
         return urlObj.scheme == "https"
     }
     
     func encryptCluckFarmData(_ data: String) -> String {
-        let key = SymmetricKey(data: Data(infernoSalt.utf8))
+        let key = SymmetricKey(data: Data(cluckFarmSalt.utf8))
         guard let dataToEncrypt = data.data(using: .utf8) else { return data }
         
         do {
@@ -49,7 +49,7 @@ class CluckFarmSecurityLayer {
     }
     
     func decryptCluckFarmData(_ encryptedData: String) -> String {
-        let key = SymmetricKey(data: Data(infernoSalt.utf8))
+        let key = SymmetricKey(data: Data(cluckFarmSalt.utf8))
         guard let dataToDecrypt = Data(base64Encoded: encryptedData) else { return encryptedData }
         
         do {
@@ -62,7 +62,7 @@ class CluckFarmSecurityLayer {
     }
 }
 
-// MARK: - Утилиты для обфускации
+// MARK: - Utilities Implementation Implementation
 
 extension CluckFarmSecurityLayer {
     func obfuscateCluckFarmString(_ input: String) -> String {

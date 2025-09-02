@@ -2,7 +2,7 @@ import Foundation
 import UserNotifications
 import UIKit
 
-// MARK: - Менеджер уведомлений для Cluck Farm
+// MARK: - Manager Implementation Implementation Cluck Farm
 
 @MainActor
 class CluckFarmNotificationManager: NSObject, ObservableObject {
@@ -49,7 +49,7 @@ class CluckFarmNotificationManager: NSObject, ObservableObject {
         
         let content = UNMutableNotificationContent()
         content.title = "Cluck Farm: Emberloom"
-        content.body = "Ваши куры скучают! Проверьте ферму и соберите яйца."
+        content.body = "Vashi kury skuchayut! Proverte fermu i soberite yaytsa."
         content.sound = .default
         content.badge = 1
         

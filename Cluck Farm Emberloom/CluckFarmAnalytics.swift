@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Аналитика для Cluck Farm
+// MARK: - Analytics Implementation Cluck Farm
 
 class CluckFarmAnalytics: ObservableObject {
     static let shared = CluckFarmAnalytics()

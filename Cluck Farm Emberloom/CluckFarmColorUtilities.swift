@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-// MARK: - Цветовые утилиты для Cluck Farm
+// MARK: - Implementation utilities Implementation Cluck Farm
 
 struct CluckFarmColorPalette {
     static let primaryGreen = "#228B22"
@@ -14,7 +14,7 @@ struct CluckFarmColorPalette {
 }
 
 extension UIColor {
-    /// Создание цвета из HEX для Cluck Farm темы
+/// Implementation details
     static func cluckFarmColor(hex: String) -> UIColor {
         let sanitizedHex = hex.trimmingCharacters(in: .alphanumerics.inverted)
         var colorValue: UInt64 = 0
@@ -27,7 +27,7 @@ extension UIColor {
         return UIColor(red: redComponent, green: greenComponent, blue: blueComponent, alpha: 1.0)
     }
     
-    /// Градиент для фермерской темы
+/// Implementation details
     static func cluckFarmGradientColors() -> [CGColor] {
         return [
             UIColor.cluckFarmColor(hex: CluckFarmColorPalette.primaryGreen).cgColor,
@@ -38,7 +38,7 @@ extension UIColor {
 }
 
 extension Color {
-    /// SwiftUI версия цветов Cluck Farm
+/// Implementation details
     static func cluckFarmTheme(hex: String) -> Color {
         let sanitizedHex = hex.trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "#", with: "")
@@ -55,7 +55,7 @@ extension Color {
     }
 }
 
-// MARK: - Анимационные утилиты
+// MARK: - Implementation utilities
 
 struct CluckFarmAnimationConfig {
     static let defaultDuration: Double = 0.8

@@ -3,7 +3,7 @@ import AVFoundation
 import CoreLocation
 import AppTrackingTransparency
 
-// MARK: - Менеджер разрешений для Cluck Farm
+// MARK: - Manager Implementation Implementation Cluck Farm
 
 @MainActor
 class CluckFarmPermissionsManager: NSObject, ObservableObject {

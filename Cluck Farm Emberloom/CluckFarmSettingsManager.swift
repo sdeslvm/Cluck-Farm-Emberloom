@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Менеджер настроек для Cluck Farm
+// MARK: - Manager Implementation Implementation Cluck Farm
 
 class CluckFarmSettingsManager: ObservableObject {
     static let shared = CluckFarmSettingsManager()
@@ -28,9 +28,9 @@ class CluckFarmSettingsManager: ObservableObject {
             
             var displayName: String {
                 switch self {
-                case .easy: return "Легкий"
-                case .medium: return "Средний"
-                case .hard: return "Сложный"
+                case .easy: return "Legkiy"
+                case .medium: return "Sredniy"
+                case .hard: return "Slozhnyy"
                 }
             }
         }
@@ -50,9 +50,9 @@ class CluckFarmSettingsManager: ObservableObject {
             
             var displayName: String {
                 switch self {
-                case .none: return "Отключено"
-                case .minimal: return "Минимальное"
-                case .standard: return "Стандартное"
+                case .none: return "Otklyucheno"
+                case .minimal: return "Minimalnoe"
+                case .standard: return "Standartnoe"
                 }
             }
         }

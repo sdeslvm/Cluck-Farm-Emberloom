@@ -2,9 +2,9 @@ import Foundation
 import SwiftUI
 import WebKit
 
-// MARK: - Протоколы
+// MARK: - Implementation
 
-/// Протокол для состояний загрузки с расширенной функциональностью
+/// Implementation details
 protocol CluckFarmLoadStateRepresentable {
     var type: CluckFarmLoadState.StateType { get }
     var percent: Double? { get }
@@ -13,13 +13,13 @@ protocol CluckFarmLoadStateRepresentable {
     func isEqual(to other: Self) -> Bool
 }
 
-// MARK: - Улучшенная структура состояния загрузки
+// MARK: - Implementation Implementation Implementation Implementation
 
-/// Структура для представления состояний веб-загрузки
+/// Implementation details
 struct CluckFarmLoadState: Equatable, CluckFarmLoadStateRepresentable {
-    // MARK: - Перечисление типов состояний
+    // MARK: - Implementation Implementation Implementation
 
-    /// Типы состояний загрузки с порядковым номером
+/// Implementation details
     enum StateType: Int, CaseIterable {
         case idle = 0
         case progress
@@ -27,54 +27,54 @@ struct CluckFarmLoadState: Equatable, CluckFarmLoadStateRepresentable {
         case error
         case offline
 
-        /// Человекочитаемое описание состояния
+/// Implementation details
         var description: String {
             switch self {
-            case .idle: return "Ожидание"
-            case .progress: return "Загрузка"
-            case .success: return "Успешно"
-            case .error: return "Ошибка"
-            case .offline: return "Нет подключения"
+            case .idle: return "Ozhidanie"
+            case .progress: return "Loading"
+            case .success: return "Uspeshno"
+            case .error: return "Error"
+            case .offline: return "Net connection"
             }
         }
     }
 
-    // MARK: - Свойства
+    // MARK: - Properties
 
     let type: StateType
     let percent: Double?
     let error: String?
 
-    // MARK: - Статические конструкторы
+    // MARK: - Implementation Implementation
 
-    /// Создание состояния простоя
+/// Implementation details
     static func idle() -> CluckFarmLoadState {
         CluckFarmLoadState(type: .idle, percent: nil, error: nil)
     }
 
-    /// Создание состояния прогресса
+/// Implementation details
     static func progress(_ percent: Double) -> CluckFarmLoadState {
         CluckFarmLoadState(type: .progress, percent: percent, error: nil)
     }
 
-    /// Создание состояния успеха
+/// Implementation details
     static func success() -> CluckFarmLoadState {
         CluckFarmLoadState(type: .success, percent: nil, error: nil)
     }
 
-    /// Создание состояния ошибки
+/// Implementation details
     static func error(_ err: String) -> CluckFarmLoadState {
         CluckFarmLoadState(type: .error, percent: nil, error: err)
     }
 
-    /// Создание состояния отсутствия подключения
+/// Implementation details
     static func offline() -> CluckFarmLoadState {
         CluckFarmLoadState(type: .offline, percent: nil, error: nil)
     }
 
-    // MARK: - Методы сравнения
+// MARK: - Methods
 
-    /// Пользовательская реализация сравнения
+/// Implementation details
     func isEqual(to other: CluckFarmLoadState) -> Bool {
         guard type == other.type else { return false }
 
@@ -88,43 +88,43 @@ struct CluckFarmLoadState: Equatable, CluckFarmLoadStateRepresentable {
         }
     }
 
-    // MARK: - Реализация Equatable
+    // MARK: - Implementation Equatable
 
     static func == (lhs: CluckFarmLoadState, rhs: CluckFarmLoadState) -> Bool {
         lhs.isEqual(to: rhs)
     }
 }
 
-// MARK: - Расширения для улучшения функциональности
+// MARK: - Extensions Implementation Implementation Implementation
 
 extension CluckFarmLoadState {
-    /// Проверка текущего состояния
+/// Implementation details
     var isLoading: Bool {
         type == .progress
     }
 
-    /// Проверка успешного состояния
+/// Implementation details
     var isSuccessful: Bool {
         type == .success
     }
 
-    /// Проверка состояния ошибки
+/// Implementation details
     var hasError: Bool {
         type == .error
     }
 }
 
-// MARK: - Расширение для отладки
+// MARK: - Implementation Implementation Implementation
 
 extension CluckFarmLoadState: CustomStringConvertible {
-    /// Строковое представление состояния
+/// Implementation details
     var description: String {
         switch type {
-        case .idle: return "Состояние: Ожидание"
-        case .progress: return "Состояние: Загрузка (\(percent?.formatted() ?? "0")%)"
-        case .success: return "Состояние: Успешно"
-        case .error: return "Состояние: Ошибка (\(error ?? "Неизвестная ошибка"))"
-        case .offline: return "Состояние: Нет подключения"
+        case .idle: return "State: Ozhidanie"
+        case .progress: return "State: Loading (\(percent?.formatted() ?? "0")%)"
+        case .success: return "State: Uspeshno"
+        case .error: return "State: Error (\(error ?? "Neizvestnaya error"))"
+        case .offline: return "State: Net connection"
         }
     }
 }

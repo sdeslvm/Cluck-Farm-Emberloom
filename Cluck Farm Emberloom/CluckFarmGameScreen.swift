@@ -15,40 +15,28 @@ struct CluckFarmEntryScreen: View {
             
             if loader.state != .finished {
                 VStack {
-                    Text("Status: \(loader.state.debugDescription)")
-                        .foregroundColor(.white)
-                        .padding()
-                    
                     switch loader.state {
-                    case .progressing(let percent):
-                        CluckFarmProgressDisplay(value: percent)
+                    case .progressing(_):
+                        // Show logo animation during loading
+                        CluckFarmLogoAnimation()
+                            .frame(width: 200, height: 200)
                     case .failure(let err):
                         CluckFarmErrorDisplay(err: err)
                     case .noConnection:
                         CluckFarmOfflineDisplay()
                     case .standby:
-                        Text("Loading...")
-                            .foregroundColor(.white)
+                        // Show logo animation during standby
+                        CluckFarmLogoAnimation()
+                            .frame(width: 200, height: 200)
                     case .finished:
                         EmptyView()
                     }
                 }
-                .background(Color.black.opacity(0.7))
             }
         }
     }
 }
 
-private struct CluckFarmProgressDisplay: View {
-    let value: Double
-    var body: some View {
-        GeometryReader { geo in
-            CluckFarmLoadingOverlay(progress: value)
-                .frame(width: geo.size.width, height: geo.size.height)
-                .background(Color.black)
-        }
-    }
-}
 
 private struct CluckFarmErrorDisplay: View {
     let err: String

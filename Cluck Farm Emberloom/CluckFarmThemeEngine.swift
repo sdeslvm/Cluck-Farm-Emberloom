@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-// MARK: - Движок тем для Cluck Farm
+// MARK: - Engine Implementation Implementation Cluck Farm
 
 class CluckFarmThemeEngine: ObservableObject {
     static let shared = CluckFarmThemeEngine()
@@ -18,10 +18,10 @@ class CluckFarmThemeEngine: ObservableObject {
         
         var displayName: String {
             switch self {
-            case .rusticFarm: return "Деревенская ферма"
-            case .modernBarn: return "Современный сарай"
-            case .vintageCountry: return "Винтажная деревня"
-            case .springMeadow: return "Весенний луг"
+            case .rusticFarm: return "Derevenskaya ferma"
+            case .modernBarn: return "Sovremennyy saray"
+            case .vintageCountry: return "Vintazhnaya derevnya"
+            case .springMeadow: return "Vesenniy lug"
             }
         }
         

@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-// MARK: - Анимационный движок для Cluck Farm
+// MARK: - Implementation engine Implementation Cluck Farm
 
 class CluckFarmAnimationEngine {
     static let shared = CluckFarmAnimationEngine()
@@ -21,7 +21,7 @@ class CluckFarmAnimationEngine {
     }
 }
 
-// MARK: - Частицы для анимации
+// MARK: - Implementation Implementation Implementation
 
 struct CluckFarmParticle {
     let id = UUID()
@@ -64,7 +64,7 @@ class CluckFarmParticleSystem: ObservableObject {
     }
 }
 
-// MARK: - Эффекты переходов
+// MARK: - Implementation Implementation
 
 struct CluckFarmTransitionEffect: ViewModifier {
     let isActive: Bool

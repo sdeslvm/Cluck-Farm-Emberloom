@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import WebKit
 
-// MARK: - Расширения утилит для Cluck Farm
+// MARK: - Extensions Implementation Implementation Cluck Farm
 
 extension String {
     var cluckFarmHash: String {
@@ -72,7 +72,7 @@ extension Data {
     }
 }
 
-// MARK: - Дополнительные протоколы для обфускации
+// MARK: - Implementation Implementation Implementation Implementation
 
 protocol CluckFarmConfigurable {
     func configureCluckFarmSettings()
@@ -89,7 +89,7 @@ protocol CluckFarmSecurable {
     func removeCluckFarmSecurity()
 }
 
-// MARK: - Вспомогательные структуры
+// MARK: - Implementation Implementation
 
 struct CluckFarmConstants {
     static let gameVersion = "2.0.0"
@@ -116,7 +116,7 @@ struct CluckFarmConstants {
 
 struct CluckFarmMetrics {
     static func trackEvent(_ eventName: String, parameters: [String: Any] = [:]) {
-        // Аналитика событий
+        // Analytics sobytiy
         let timestamp = Date().timeIntervalSince1970
         let eventData = [
             "event": eventName,
@@ -124,7 +124,7 @@ struct CluckFarmMetrics {
             "parameters": parameters
         ] as [String : Any]
         
-        // Сохраняем в локальное хранилище для последующей отправки
+        // Sohranyaem v lokalnoe hranilische dlya posleduyuschey otpravki
         var events = UserDefaults.standard.array(forKey: "cluckFarmEvents") as? [[String: Any]] ?? []
         events.append(eventData)
         UserDefaults.standard.set(events, forKey: "cluckFarmEvents")

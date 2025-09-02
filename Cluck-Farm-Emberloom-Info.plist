@@ -19,14 +19,6 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Cluck Farm uses camera to scan QR codes for special farm events and AR chicken interactions.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Cluck Farm uses microphone to detect clucking sounds for interactive gameplay features.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Cluck Farm tracks usage to provide personalized farm recommendations and improve your gaming experience.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Cluck Farm uses location to find nearby farm events and weather-based gameplay features.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -46,7 +38,5 @@
 	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>This app would like to track you across apps and websites to provide personalized gaming experiences.</string>
 </dict>
 </plist>

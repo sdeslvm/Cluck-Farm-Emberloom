@@ -266,7 +266,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cluckfarm.emberloom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -301,7 +301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cluckfarm.emberloom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -317,7 +317,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		639727872E62162900263C37 /* Build configuration list for PBXProject "Egg Inferno 2" */ = {
+		639727872E62162900263C37 /* Build configuration list for PBXProject "Cluck Farm Emberloom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				639727982E62162B00263C37 /* Debug */,
@@ -326,7 +326,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6397279A2E62162B00263C37 /* Build configuration list for PBXNativeTarget "Egg Inferno 2" */ = {
+		6397279A2E62162B00263C37 /* Build configuration list for PBXNativeTarget "Cluck Farm Emberloom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6397279B2E62162B00263C37 /* Debug */,
